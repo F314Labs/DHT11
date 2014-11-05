@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--
+Author: f314labs@gmail.com
+
+Purpose: 
+	Display temperature & humidity measurements:
+	 - done using a DHT-11 sensor connected to a Raspberry Pi computer
+	 - collected in CSV format
+	 - parsed using Papa parse
+	 - displayed using Highcharts
+	 
+ Project under Attribution, Non-Commercial (CC BY-NC 4.0) Creative Commons License
+ http://creativecommons.org/licenses/by-nc/4.0/
+-->
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="style.css" />
+        <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <title>F-314 Labs</title>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script src="./js/highcharts.js"></script>
+		<script src="./js/papaparse.min.js"></script>
+		<script src="./js/dht11.js"></script>
+		</head>
+    
+    <!--[if IE 6 ]><body class="ie6 old_ie"><![endif]-->
+    <!--[if IE 7 ]><body class="ie7 old_ie"><![endif]-->
+    <!--[if IE 8 ]><body class="ie8"><![endif]-->
+    <!--[if IE 9 ]><body class="ie9"><![endif]-->
+    <!--[if !IE]><!--><body><!--<![endif]-->
+        <div id="bloc_page">
+            <header>
+                <div id="titre_principal">
+                    <img src="images/Raspi_Colour_R.png" alt="Framboise" id="logo" />
+                    <h1>F-314 Labs</h1>
+                </div>
+             </header>
+            
+            
+            <section>
+                <article>
+                    <h1><img src="images/dht11.jpg" alt="DHT 11" class="ico_categorie" />DHT 11: Température & Humidité</h1>
+					<p>
+						<input type="file" id="csv-file" name="files"/>
+						<a href="./data sample/2014-10-29.csv">Télécharger un fichier de données</a>
+					</p>
+					<p></br></p>
+					<div id="container" style="width:100%; height:400px;">
+					</div>
+					<p></br></p>
+				</article>
+
+            </section>
+            
+            <footer>
+			    <div id="creativec">
+					<p>
+					<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
+					<img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />Ce projet est mis à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Licence Creative Commons Attribution - Pas d’Utilisation Commerciale 4.0 International</a>.				
+					</p>
+				</div>
+                <div id="credits">
+ 					<h1>Crédits</h1>
+					<ul>
+                        <li><a href="https://learn.adafruit.com/dht-humidity-sensing-on-raspberry-pi-with-gdocs-logging">Learn.adafruit</a></li>
+                        <li><a href="http://fr.openclassrooms.com/informatique/cours/apprenez-a-creer-votre-site-web-avec-html5-et-css3">Openclassrooms</a></li>
+                        <li><a href="http://www.highcharts.com/">Highcharts</a></li>
+                        <li><a href="http://papaparse.com/">Papa Parse</a></li>
+                        <li><a href="http://forums.framboise314.fr/index.php">Manfraid (Forum Framboise 314)</a></li>
+                    </ul>
+				</div>
+				<div id="contacts">
+ 					<h1>Téléchargement</h1>
+					<ul>
+						<li><a href="./../doc/F314Labs-DHT11.pdf">La documentation du projet</a></li>
+						<li><a href="./../../DHT-11.zip">Le code du projet</a></li>
+                     </ul>
+ 					<h1>Contact</h1>
+					<ul>
+                        <li><a href="mailto:f314labs@gmail.com">F-314 Labs</a></li>
+                     </ul>
+				</div>
+
+            </footer>
+        </div>
+	</body>
+</html>
