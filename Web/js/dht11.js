@@ -10,6 +10,13 @@ Purpose:
 	 
  Project under Attribution, Non-Commercial (CC BY-NC 4.0) Creative Commons License
  http://creativecommons.org/licenses/by-nc/4.0/
+ 
+ 
+# Version 1.1
+# 	Changes:
+# 		Enable compatibility with DHT-22 (16 bit-resolution)
+# 		Change data format from int (DHT-11 only) to float (DHT-11 & 22)
+
 */
 
 
@@ -53,7 +60,7 @@ var options = {
 			name: 'Température',
 			tooltip: {
 			headerFormat: '<b>{series.name}</b><br>',
-			pointFormat: '{point.x:%H:%M:%S} - {point.y:.0f}°C',  
+			pointFormat: '{point.x:%H:%M:%S} - {point.y:.1f}°C',  
            },
 			data: [], // to be loaded
  			},{
@@ -61,7 +68,7 @@ var options = {
 			name: 'Humidité',
 			tooltip: {
 				headerFormat: '<b>{series.name}</b><br>',
-				pointFormat: '{point.x:%H:%M:%S} - {point.y:.0f}%',  
+				pointFormat: '{point.x:%H:%M:%S} - {point.y:.1f}%',  
             },
 			data: [], // to be loaded
 		}],
@@ -92,9 +99,9 @@ var options = {
 									var hh = parseInt(dateitems[0]);
 									var min = parseInt(dateitems[1]);
 									var sec = parseInt(dateitems[2]);
-									
-									var t = parseInt(results.data[i].Temp);
-									var h = parseInt(results.data[i].Humid);
+								// Version 1.1: parseInt --> parseFloat	
+									var t = parseFloat(results.data[i].Temp);
+									var h = parseFloat(results.data[i].Humid);
 
 									options.series[0].data.push([Date.UTC(yy, mm, dd, hh, min, sec), t]);
 									options.series[1].data.push([Date.UTC(yy, mm, dd, hh, min, sec), h]);

@@ -12,6 +12,11 @@
 # Project under Attribution, Non-Commercial (CC BY-NC 4.0) Creative Commons License
 # http://creativecommons.org/licenses/by-nc/4.0/
 
+# Version 1.1
+# 	Changes:
+# 		Enable compatibility with DHT-22 (16 bit-resolution)
+# 		Change data format from int (DHT-11 only) to float (DHT-11 & 22)
+
 # Derived from:
 #
 # Google Spreadsheet DHT Sensor Data-logging Example
@@ -43,10 +48,10 @@ import datetime
 import Adafruit_DHT
 
 # Type of sensor, can be Adafruit_DHT.DHT11, Adafruit_DHT.DHT22, or Adafruit_DHT.AM2302.
-DHT_TYPE = Adafruit_DHT.DHT11
+DHT_TYPE = Adafruit_DHT.DHT22
 
-# Sensor connected to Raspberry Pi pin 4
-DHT_PIN  = 4
+# Sensor connected to Raspberry Pi pin...
+DHT_PIN  = 18
 
 
 
@@ -100,19 +105,15 @@ while go_on:
 	if humid is None or temp is None:
 		time.sleep(2)
 		continue
-    # ATTENTION:
-	# Le DHT-11 a une résolution de 8 bits: mesures en entier
-    # Pour un DHT-22 (résolution 16 bits) prévoir un traitement des decimales --> type float    
-	i_humid = int(humid) 
-	i_temp = int(temp)
+
 
 	now = datetime.datetime.now()
 	fnow = now.strftime("%Y-%m-%d %H:%M:%S")
 	print fnow
-	print 'Temperature: {:d} °C'.format(i_temp)
-	print 'Humidité:    {:d} %'.format(i_humid)
+	print 'Temperature: {:.1f} °C'.format(temp)
+	print 'Humidité:    {:.1f} %'.format(humid)
 
-	data_record = '{}; {:d}; {:d}\n'.format(fnow, i_temp, i_humid)
+	data_record = '{}; {:.1f}; {:.1f}\n'.format(fnow, temp, humid)
 	
 	# Append the data in the spreadsheet, including a timestamp
 	try:
